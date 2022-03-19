@@ -1,0 +1,12 @@
+name: BeaconSmp
+version: '${project.version}'
+main: me.thatonedevil.beaconsmp.BeaconSmp
+api-version: 1.18
+authors: [ ThatOneDevil ]
+description: A plugin for the beacon smp
+commands:
+  setValue:
+    description: Admin use to set value
+    permissions: Admin.setValue
+  sell:
+    description: sell items
