@@ -4,7 +4,6 @@ package me.thatonedevil.beaconsmp.economy;
 import me.thatonedevil.beaconsmp.BeaconSmp;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Beacon;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -19,7 +18,7 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.ArrayList;
 
 import static me.thatonedevil.beaconsmp.BeaconSmp.format;
-import static me.thatonedevil.beaconsmp.economy.NbtData.getData;
+import static me.thatonedevil.beaconsmp.nbtStuff.NbtManager.getData;
 
 public class SellEvent implements Listener{
 

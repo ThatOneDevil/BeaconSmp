@@ -6,7 +6,12 @@ authors: [ ThatOneDevil ]
 description: A plugin for the beacon smp
 commands:
   setValue:
-    description: Admin use to set value
+    description: Admin use to set value to any item
     permissions: Admin.setValue
   sell:
     description: sell items
+  beaconmenu:
+    description: Opens beacom menu
+  shop:
+    description: Opnes shop
+

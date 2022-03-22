@@ -1,4 +1,4 @@
-package me.thatonedevil.beaconsmp.economy;
+package me.thatonedevil.beaconsmp.nbtStuff;
 
 import me.thatonedevil.beaconsmp.BeaconSmp;
 import org.bukkit.NamespacedKey;
@@ -12,7 +12,7 @@ import java.util.Arrays;
 import static me.thatonedevil.beaconsmp.BeaconSmp.format;
 
 
-public class NbtData {
+public class NbtManager {
 
     public static Double getData(ItemStack item, String key) {
         NamespacedKey nkey = new NamespacedKey(BeaconSmp.getPlugin(BeaconSmp.class), key);
@@ -22,6 +22,7 @@ public class NbtData {
             return container.get(nkey, PersistentDataType.DOUBLE);
         } else {
             return null;
+
         }
     }
 

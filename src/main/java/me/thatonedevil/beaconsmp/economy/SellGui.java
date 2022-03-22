@@ -10,7 +10,7 @@ import org.bukkit.inventory.Inventory;
 
 import static me.thatonedevil.beaconsmp.BeaconSmp.format;
 
-public class ValueGui implements CommandExecutor {
+public class SellGui implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
