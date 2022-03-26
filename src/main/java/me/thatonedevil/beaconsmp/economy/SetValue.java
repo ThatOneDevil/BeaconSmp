@@ -21,7 +21,7 @@ public class SetValue implements CommandExecutor {
             if (args.length == 1) {
                 if (item.getType() != Material.AIR) {
                     setData(Double.valueOf(args[0]), item, "Value");
-                    player.sendMessage(format("&6Value &e" + args[0] + " &6has been added to your item!"));
+                    player.sendMessage(format("&6Value &e" + args[0] + " &6has been added to your item"));
 
                 } else {
                     player.sendMessage(format("&cUsage: /setValue [value]"));

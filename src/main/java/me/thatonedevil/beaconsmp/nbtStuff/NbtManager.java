@@ -14,6 +14,12 @@ import static me.thatonedevil.beaconsmp.BeaconSmp.format;
 
 public class NbtManager {
 
+    /**
+     * @param item requires ItemStack to get value from.
+     * @param key requires a string to get value from.
+     * @return the ItemBuilder.
+     */
+
     public static Double getData(ItemStack item, String key) {
         NamespacedKey nkey = new NamespacedKey(BeaconSmp.getPlugin(BeaconSmp.class), key);
         ItemMeta itemMeta = item.getItemMeta();
@@ -25,6 +31,13 @@ public class NbtManager {
 
         }
     }
+
+    /**
+     * @param item requires ItemStack to get value from.
+     * @param value needs a value to set to ItemStack.
+     * @param key requires a string to get value from.
+     * @return the ItemBuilder.
+     */
 
     public static void setData(Double value, ItemStack item, String key) {
         NamespacedKey nkey = new NamespacedKey(BeaconSmp.getPlugin(BeaconSmp.class), key);

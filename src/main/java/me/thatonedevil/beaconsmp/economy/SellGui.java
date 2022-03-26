@@ -16,7 +16,7 @@ public class SellGui implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player)sender;
-            Inventory inv = Bukkit.createInventory(null, 54, format("&bClose inventory to sell!"));
+            Inventory inv = Bukkit.createInventory(null, 54, format("&bClose inventory to sell"));
 
             player.openInventory(inv);
         }

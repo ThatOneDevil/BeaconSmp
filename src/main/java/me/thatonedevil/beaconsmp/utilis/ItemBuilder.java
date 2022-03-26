@@ -14,16 +14,12 @@ public class ItemBuilder {
     /**
      * The constructor method.
      * @param material the material of the item you are building.
-     * @param amount   the amount of items in the item you are building.
+     * @param amount the amount of items in the item you are building.
      */
 
     public ItemBuilder(Material material, int amount) {
         this.itemStack = new ItemStack(material, amount);
         this.itemMeta = this.itemStack.getItemMeta();
-    }
-
-    private void updateItemMeta() {
-        this.itemStack.setItemMeta(this.itemMeta);
     }
 
     /**
@@ -48,15 +44,23 @@ public class ItemBuilder {
         return this;
     }
 
+    /**
+     * @param price set the buy price
+     * @return the ItemBuilder.
+     */
+
+    public ItemBuilder setBuyPrice(Double price){
+        this.itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&aBuy this for &2" + price)));
+        return this;
+    }
+
     public ItemStack build() {
         this.updateItemMeta();
         return this.itemStack;
     }
 
-    public ItemBuilder setBuyPrice(Double price){
-        this.itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', "&aBuy this for &2" + price)));
-        return this;
-
+    private void updateItemMeta() {
+        this.itemStack.setItemMeta(this.itemMeta);
     }
 
 

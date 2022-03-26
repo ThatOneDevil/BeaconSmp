@@ -10,8 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static me.thatonedevil.beaconsmp.BeaconSmp.format;
 
@@ -21,7 +19,7 @@ public class ShopGui implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player)sender;
-            Inventory inv = Bukkit.createInventory(null, 27, format("&bBeacon Shop!"));
+            Inventory inv = Bukkit.createInventory(null, 27, format("&bBeacon Shop"));
 
             ItemStack itemStack = new ItemBuilder(Material.OAK_SIGN, 1)
                     .setDisplayName("&3Test")

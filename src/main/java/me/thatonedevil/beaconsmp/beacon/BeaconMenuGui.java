@@ -17,8 +17,8 @@ public class BeaconMenuGui implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
-            Player player = (Player)sender;
-            Inventory inv = Bukkit.createInventory(null, 27, format("&bBeacon Menu!"));
+            Player player = (Player) sender;
+            Inventory inv = Bukkit.createInventory(null, 27, format("&bBeacon Menu"));
 
             ItemStack itemStack = new ItemBuilder(Material.OAK_SIGN, 1)
                     .setDisplayName("&3Click to open &bshop").build();

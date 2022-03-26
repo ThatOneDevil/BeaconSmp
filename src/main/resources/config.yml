@@ -1,0 +1,9 @@
+# Database please input the correct information without this, the plugin cannot work properly.
+# After you have put the values in please restart the server and check if the database is online
+# You can check this in the console
+
+Host: "[Replace this]"
+Port: 0
+Database: "[Replace this]"
+Username: "[Replace this]"
+Password: "[Replace this]"

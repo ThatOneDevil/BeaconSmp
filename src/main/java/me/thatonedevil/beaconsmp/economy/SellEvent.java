@@ -25,7 +25,7 @@ public class SellEvent implements Listener{
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e){
         Player player = (Player) e.getPlayer();
-        if (e.getInventory() != null && e.getView().getTitle().contains("Close inventory to sell!")){
+        if (e.getInventory() != null && e.getView().getTitle().contains("Close inventory to sell")){
 
             if (e.getInventory().getContents() != null) {
 
