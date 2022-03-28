@@ -60,6 +60,7 @@ public class SellEvent implements Listener{
                     e.setCancelled(true);
                     player.sendMessage(format("&cSorry, but this item does not have a value!"));
                 }
+                player.sendMessage(container.get(key, PersistentDataType.DOUBLE).toString());
             }
         }
 

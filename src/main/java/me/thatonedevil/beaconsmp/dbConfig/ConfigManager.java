@@ -1,4 +1,4 @@
-package me.thatonedevil.beaconsmp.Config;
+package me.thatonedevil.beaconsmp.dbConfig;
 
 import me.thatonedevil.beaconsmp.BeaconSmp;
 
@@ -14,7 +14,7 @@ public class ConfigManager {
         return main.getConfig().getString("Host");
     }
 
-    public Integer getPort() {
+    public int getPort() {
         return main.getConfig().getInt("Port");
     }
 

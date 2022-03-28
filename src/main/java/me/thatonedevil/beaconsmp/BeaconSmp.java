@@ -1,8 +1,6 @@
 package me.thatonedevil.beaconsmp;
 
-import me.thatonedevil.beaconsmp.Database.ConnectionListener;
-import me.thatonedevil.beaconsmp.Database.Database;
-import me.thatonedevil.beaconsmp.Database.PlayerManager;
+import me.thatonedevil.beaconsmp.Database.*;
 import me.thatonedevil.beaconsmp.beacon.BeaconMenuClickEvent;
 import me.thatonedevil.beaconsmp.beacon.BeaconMenuGui;
 import me.thatonedevil.beaconsmp.economy.SellEvent;
@@ -25,17 +23,14 @@ public final class BeaconSmp extends JavaPlugin {
     public void onEnable() {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
-
-        Database Database = new Database(this);
-
         database = new Database(this);
-        playerManager = new PlayerManager();
 
         try {
             database.connect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        playerManager = new PlayerManager();
 
         System.out.println();
         System.out.println("-----------------");
@@ -51,6 +46,9 @@ public final class BeaconSmp extends JavaPlugin {
         getCommand("sell").setExecutor(new SellGui());
         getCommand("beaconmenu").setExecutor(new BeaconMenuGui());
         getCommand("shop").setExecutor(new ShopGui());
+        getCommand("resetAllData").setExecutor(new ResetAllData(this));
+        getCommand("setPlayerData").setExecutor(new SetPlayerData(this));
+        getCommand("getPlayerData").setExecutor(new GetPlayerData(this));
 
 
         Bukkit.getPluginManager().registerEvents(new SellEvent(), this);

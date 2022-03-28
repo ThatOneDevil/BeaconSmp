@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import me.thatonedevil.beaconsmp.BeaconSmp;
-import me.thatonedevil.beaconsmp.Config.ConfigManager;
+import me.thatonedevil.beaconsmp.dbConfig.ConfigManager;
 
 
 public class Database {

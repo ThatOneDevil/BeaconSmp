@@ -10,9 +10,9 @@ public class BeaconMenuClickEvent implements Listener {
     public void onInventoryClick(InventoryClickEvent e) {
 
         Player player = (Player) e.getWhoClicked();
-        e.setCancelled(true);
         if (e.getInventory() != null && e.getCurrentItem() != null && e.getView().getTitle().contains("Beacon Menu")) {
             if (e.getRawSlot() == 11){
+                e.setCancelled(true);
                 player.closeInventory();
                 player.performCommand("shop");
             }

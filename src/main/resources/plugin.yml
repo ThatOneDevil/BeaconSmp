@@ -7,11 +7,19 @@ description: A plugin for the beacon smp
 commands:
   setValue:
     description: Admin use to set value to any item
-    permissions: Admin.setValue
+    permissions: admin.setValue
   sell:
     description: sell items
   beaconmenu:
     description: Opens beacom menu
   shop:
     description: Opnes shop
-
+  resetAllData:
+    permission: Console
+    description: Can reset all db data, can only be ran by console
+  setplayerdata:
+    description: sets a player's data -.-
+    permission: admin.setplayerdata
+  getPlayerData:
+    description: get a player's data
+    permission: admin.getPlayerData
