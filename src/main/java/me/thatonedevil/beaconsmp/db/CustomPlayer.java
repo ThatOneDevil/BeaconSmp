@@ -1,4 +1,4 @@
-package me.thatonedevil.beaconsmp.Database;
+package me.thatonedevil.beaconsmp.db;
 
 import me.thatonedevil.beaconsmp.BeaconSmp;
 
@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class CustomPlayer {
-    private BeaconSmp main;
+    private final BeaconSmp main;
 
-    private int stars;
+    private double stars;
     private String beaconLoc;
 
     private UUID uuid;
@@ -38,7 +38,7 @@ public class CustomPlayer {
 
     }
 
-    public void setStars(int stars) {
+    public void setStars(Double stars) {
         this.stars = stars;
         try {
             PreparedStatement statement = main.getDatabase().getConnection().prepareStatement("UPDATE players SET STARS = " + stars + " WHERE UUID = '" + uuid + "';");
@@ -71,8 +71,7 @@ public class CustomPlayer {
     }
 
 
-
-    public int getStars() { return stars; }
+    public double getStars() { return stars; }
     public String getBeaconLoc() { return beaconLoc; }
     public UUID getUuid() { return uuid; }
 

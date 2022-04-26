@@ -1,4 +1,4 @@
-package me.thatonedevil.beaconsmp.Database;
+package me.thatonedevil.beaconsmp.db;
 
 import me.thatonedevil.beaconsmp.BeaconSmp;
 import org.bukkit.Bukkit;
@@ -14,7 +14,7 @@ import static me.thatonedevil.beaconsmp.BeaconSmp.format;
 
 public class SetPlayerData implements CommandExecutor {
 
-    private BeaconSmp main;
+    private final BeaconSmp main;
 
     public SetPlayerData(BeaconSmp main) {
         this.main = main;
@@ -34,7 +34,7 @@ public class SetPlayerData implements CommandExecutor {
                         CustomPlayer playerData = new CustomPlayer(main, target.getUniqueId());
                         switch (args[1].toLowerCase()) {
                             case "stars":
-                                playerData.setStars(Integer.parseInt(args[2]));
+                                playerData.setStars(Double.parseDouble(args[2]));
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6Set stars of &e" + target.getDisplayName() + " &6to &e" + args[2]));
                                 break;
                         }

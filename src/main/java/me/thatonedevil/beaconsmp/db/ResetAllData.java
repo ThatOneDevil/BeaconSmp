@@ -1,4 +1,4 @@
-package me.thatonedevil.beaconsmp.Database;
+package me.thatonedevil.beaconsmp.db;
 
 import me.thatonedevil.beaconsmp.BeaconSmp;
 import org.bukkit.ChatColor;

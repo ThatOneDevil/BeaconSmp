@@ -23,3 +23,9 @@ commands:
   getPlayerData:
     description: get a player's data
     permission: admin.getPlayerData
+  resetPlayerData:
+    description: resets player data
+    permission: admin.resetPlayerData
+  deleteAllHolo:
+    description: deletes all holograms
+    permission: admin.deleteAllHolo

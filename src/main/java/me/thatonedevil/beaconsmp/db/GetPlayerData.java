@@ -1,4 +1,4 @@
-package me.thatonedevil.beaconsmp.Database;
+package me.thatonedevil.beaconsmp.db;
 
 import me.thatonedevil.beaconsmp.BeaconSmp;
 import org.bukkit.Bukkit;
@@ -31,7 +31,7 @@ public class GetPlayerData implements CommandExecutor {
                         CustomPlayer playerData = new CustomPlayer(main, target.getUniqueId());
                         UUID uuid = playerData.getUuid();
                         String beaconLoc = playerData.getBeaconLoc();
-                        int stars = playerData.getStars();
+                        double stars = playerData.getStars();
 
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6Data of " + target.getDisplayName() +
                                 "\n &fUUID: &b" + uuid +
