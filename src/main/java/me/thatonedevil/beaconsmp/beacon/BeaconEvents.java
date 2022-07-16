@@ -3,12 +3,14 @@ package me.thatonedevil.beaconsmp.beacon;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import com.gmail.filoghost.holographicdisplays.api.line.TextLine;
+import com.gmail.filoghost.holographicdisplays.api.placeholder.PlaceholderReplacer;
 import me.thatonedevil.beaconsmp.BeaconSmp;
-import me.thatonedevil.beaconsmp.db.CustomPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,11 +18,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.util.Vector;
 
-import java.sql.SQLException;
 import java.util.*;
 
+import static me.thatonedevil.beaconsmp.BeaconSmp.api;
 import static me.thatonedevil.beaconsmp.BeaconSmp.format;
 
 public class BeaconEvents implements Listener {
@@ -37,16 +38,17 @@ public class BeaconEvents implements Listener {
         Player player = e.getPlayer();
         Block block = e.getBlock();
         if (player.getItemInHand().getType() == Material.BEACON) {//&& player.getItemInHand().getItemMeta().getLore().contains(format(ChatColor.AQUA + player.getName() + "&b's Beacon"))) {
+            final Location loc = block.getLocation();
 
-            try {
-                CustomPlayer playerData = new CustomPlayer(main, player.getUniqueId());
-                playerData.setBeaconLoc("Placed");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            YamlConfiguration config = api.get(player);
+            api.create(player);
+            YamlConfiguration configNew = api.getOrCreate(player);
+            configNew.set("Name", player.getName());
+            configNew.set("Stars", 0);
+            configNew.set("BeaconLocation", block.getLocation().toString());
+            api.save(player, configNew);
 
-            Location loc = block.getLocation();
-            loc.add(0, 2,0);
+            loc.add(0, 2, 0);
 
             holo = HologramsAPI.createHologram(main, loc);
             holo.setAllowPlaceholders(true);
@@ -57,23 +59,25 @@ public class BeaconEvents implements Listener {
             TextLine textLine5 = holo.appendTextLine(format("&3Member count: &cCOMING SOON!"));
             player.sendMessage(format("&bPlaced player beacon, at" + block.getLocation()));
 
+            HologramsAPI.registerPlaceholder(main, "{stars}", 10, new HoloPlaceHolder(config.getString("Stars")));
         }
+
     }
     @EventHandler
     public void onBreakEvent(BlockBreakEvent e) {
         Player player = e.getPlayer();
-        Block block = e.getBlock();
-        try {
-            CustomPlayer playerData = new CustomPlayer(main, player.getUniqueId());
-            if (block.getType().equals(Material.BEACON) && playerData.getBeaconLoc().equals("Placed")) {
-                playerData.setBeaconLoc("Not placed");
-                holo.delete();
-                player.sendMessage(format("&bPicked up beacon!"));
-                player.getInventory().addItem(beacon(player));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+
+        api.create(player);
+        YamlConfiguration configNew = api.getOrCreate(player);
+        configNew.set("Name", player.getName());
+        configNew.set("Stars", 0);
+        configNew.set("BeaconLocation", "N/A");
+        api.save(player, configNew);
+
+        holo.delete();
+        player.sendMessage(format("&bPicked up beacon!"));
+        player.getInventory().addItem(beacon(player));
+
     }
 
     private ItemStack beacon(Player player){

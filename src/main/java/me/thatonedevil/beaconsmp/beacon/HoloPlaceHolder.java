@@ -4,14 +4,14 @@ import com.gmail.filoghost.holographicdisplays.api.placeholder.PlaceholderReplac
 
 public class HoloPlaceHolder implements PlaceholderReplacer {
 
-    private final double stars;
+    private final String stars;
 
-    public HoloPlaceHolder(double stars) {
+    public HoloPlaceHolder(String stars) {
         this.stars = stars;
     }
 
     @Override
     public String update() {
-        return String.valueOf(stars);
+        return stars;
     }
 }
